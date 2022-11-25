@@ -8,7 +8,9 @@ export default function List() {
     <ListContainer>
       <header>
         <h2>Tarefas</h2>
-        <MdAdd size={24} color={"#fff"} />
+        <button>
+          <MdAdd size={24} color={"#fff"} />
+        </button>
       </header>
       <ul>
         <Card />
