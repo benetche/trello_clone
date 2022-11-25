@@ -1,5 +1,6 @@
 import React from "react";
 import { CardContainer, CardLabel } from "./styles";
+
 export default function Card() {
   return (
     <CardContainer>
