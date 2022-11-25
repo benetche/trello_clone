@@ -6,6 +6,7 @@ export const ListContainer = styled.div`
   flex: 0 0 300px;
   background-color: #ebecf0;
   margin: 10px;
+  border-radius: 5px;
 
   header {
     display: flex;
@@ -25,9 +26,5 @@ export const ListContainer = styled.div`
       background-color: #d81e5b;
       border: 0;
     }
-  }
-
-  & + div {
-    border-left: 2px solid rgba(255, 255, 255, 0.67);
   }
 `;
