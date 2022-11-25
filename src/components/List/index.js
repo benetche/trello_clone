@@ -7,7 +7,7 @@ export default function List() {
   return (
     <ListContainer>
       <header>
-        <h3>Tarefas</h3>
+        <h2>Tarefas</h2>
         <MdAdd size={24} color={"#fff"} />
       </header>
       <ul>
