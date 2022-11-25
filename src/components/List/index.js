@@ -3,19 +3,21 @@ import { ListContainer } from "./styles";
 import { MdAdd } from "react-icons/md";
 import Card from "../Card";
 
-export default function List() {
+export default function List({ data }) {
   return (
     <ListContainer>
       <header>
-        <h2>Tarefas</h2>
-        <button>
-          <MdAdd size={24} color={"#fff"} />
-        </button>
+        <h2>{data.title}</h2>
+        {data.creatable && (
+          <button>
+            <MdAdd size={24} color={"#fff"} />
+          </button>
+        )}
       </header>
       <ul>
-        <Card />
-        <Card />
-        <Card />
+        {data.cards.map((card) => (
+          <Card key={card.id} data={card}></Card>
+        ))}
       </ul>
     </ListContainer>
   );
