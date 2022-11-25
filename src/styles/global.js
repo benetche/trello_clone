@@ -15,9 +15,13 @@ export default createGlobalStyle`
   }
 
   body{
+    height: 100%;
+    margin: 0;
+    background-attachment: fixed;
+    background-image: linear-gradient(45deg, #B91372, #41EAD4);
+    background-repeat: no-repeat;
     font: 14px 'Poppins', sans-serif;
-    background-color: #121212;
-    color: #fff;
+    color: #121212;
     -webkit-font-smoothing: antialiased !important;
   }
 `;
