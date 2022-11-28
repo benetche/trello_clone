@@ -9,7 +9,7 @@ export default function Header({ setShowModal }) {
           setShowModal(true);
         }}
       >
-        Create List
+        New List
       </Button>
     </Container>
   );

@@ -13,18 +13,14 @@ export const ListContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 42px;
+    margin: 10px 0px;
     h2 {
+      max-width: 196px;
       font-weight: 300;
       font-size: 1.25rem;
-      padding: 0 20px;
-    }
-    button {
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      background-color: #d81e5b;
-      border: 0;
+      white-space: nowrap;
+      overflow: hidden; /* "overflow" value must be different from "visible" */
+      text-overflow: ellipsis;
     }
   }
 `;

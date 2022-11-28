@@ -2,6 +2,7 @@ import React from "react";
 import { ListContainer } from "./styles";
 import { MdAdd } from "react-icons/md";
 import Card from "../Card";
+import { Button } from "@mui/material";
 
 export default function List({ data }) {
   return (
@@ -9,9 +10,13 @@ export default function List({ data }) {
       <header>
         <h2>{data.title}</h2>
         {data.creatable && (
-          <button>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ width: "30px", height: "30px", borderRadius: "30px" }}
+          >
             <MdAdd size={24} color={"#fff"} />
-          </button>
+          </Button>
         )}
       </header>
       <ul>
