@@ -20,12 +20,6 @@ export default function Table() {
       title: "No Status",
       creatable: true,
       id: 1,
-      cards: [
-        {
-          id: 1,
-          content: "Default Content",
-        },
-      ],
     },
   ]);
   const createList = (list) => {
@@ -33,7 +27,7 @@ export default function Table() {
   };
 
   const deleteList = (id) => {
-    var filtered = lists.filter((list) => list.id !== id);
+    let filtered = lists.filter((list) => list.id !== id);
     setLists(filtered);
   };
 

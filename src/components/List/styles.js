@@ -7,7 +7,7 @@ export const ListContainer = styled.div`
   background-color: #ebecf0;
   margin: 10px;
   border-radius: 5px;
-
+  overflow-y: auto;
   header {
     display: flex;
     justify-content: space-between;
