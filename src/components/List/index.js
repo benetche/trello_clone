@@ -4,14 +4,18 @@ import { MdMoreHoriz } from "react-icons/md";
 import Card from "../Card";
 import { Button, Menu, MenuItem } from "@mui/material";
 
-export default function List({ data }) {
+export default function List({ data, delFunc }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleDelete = () => {
+    delFunc(data.id);
   };
 
   return (
@@ -40,7 +44,8 @@ export default function List({ data }) {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem>Delete</MenuItem>
+          <MenuItem>Create Card</MenuItem>
+          <MenuItem onClick={() => handleDelete()}>Delete List</MenuItem>
         </Menu>
       </header>
       <ul>

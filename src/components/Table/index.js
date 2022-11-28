@@ -32,6 +32,11 @@ export default function Table() {
     setLists([...lists, list]);
   };
 
+  const deleteList = (id) => {
+    var filtered = lists.filter((list) => list.id !== id);
+    setLists(filtered);
+  };
+
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -64,7 +69,7 @@ export default function Table() {
       <Header setShowModal={setShowModal} />
       <TableContainer>
         {lists.map((list) => (
-          <List key={list.id} data={list}></List>
+          <List key={list.id} data={list} delFunc={deleteList}></List>
         ))}
       </TableContainer>
       <Dialog fullWidth open={showModal} onClose={handleClose}>
