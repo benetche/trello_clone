@@ -16,7 +16,7 @@ export const ListContainer = styled.div`
     margin: 10px 0px;
     h2 {
       max-width: 196px;
-      font-weight: 300;
+      font-weight: bold;
       font-size: 1.25rem;
       white-space: nowrap;
       overflow: hidden; /* "overflow" value must be different from "visible" */

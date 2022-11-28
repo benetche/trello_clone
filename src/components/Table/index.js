@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TableContainer } from "./styles";
 import List from "../List";
-import { useState, useEffect } from "react";
 import Header from "../Header";
 import {
   Dialog,

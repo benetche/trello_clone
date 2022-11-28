@@ -1,17 +1,9 @@
 import React from "react";
 import { CardContainer } from "./styles";
-import { useDrag } from "react-dnd";
-import { Button, Checkbox, FormControlLabel } from "@mui/material";
+import { Checkbox, FormControlLabel } from "@mui/material";
 import { MdDelete } from "react-icons/md";
 
 export default function Card({ data }) {
-  // const [{ isDragging }, dragRef] = useDrag({
-  //   type: "CARD",
-  //   collect: (monitor) => ({
-  //     isDragging: monitor.isDragging(),
-  //   }),
-  // });
-
   return (
     <CardContainer>
       <div id="content">

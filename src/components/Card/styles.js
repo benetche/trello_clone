@@ -22,6 +22,7 @@ export const CardContainer = styled.div`
   #delete {
     display: none;
   }
+
   #delete:hover {
     filter: brightness(95%);
   }
