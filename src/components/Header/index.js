@@ -1,9 +1,16 @@
 import { Container } from "./styles";
-
-export default function Header() {
+import { Button } from "@mui/material";
+export default function Header({ setShowModal }) {
   return (
     <Container>
-      <h2>be.lug</h2>
+      <Button
+        variant="contained"
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
+        Create List
+      </Button>
     </Container>
   );
 }

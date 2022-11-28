@@ -1,15 +1,26 @@
 import React from "react";
 import { TableContainer } from "./styles";
 import List from "../List";
-import { loadLists } from "../../services/api";
-import { useState } from "react";
-// const lists = loadLists();
+import { useState, useEffect } from "react";
+import Header from "../Header";
+import {
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  TextField,
+  Button,
+} from "@mui/material";
 
 export default function Table() {
+  const [error, setError] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [lists, setLists] = useState([
     {
       title: "No Status",
       creatable: true,
+      id: 1,
       cards: [
         {
           id: 1,
@@ -18,16 +29,63 @@ export default function Table() {
       ],
     },
   ]);
-
   const createList = (list) => {
-    setLists(...lists, list);
+    setLists([...lists, list]);
+  };
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+    setError(null);
+    setTitle(null);
+  };
+
+  const handleSubmit = () => {
+    if (title.length === 0) {
+      setError("Title can't be empty");
+      console.log("Error occured");
+    } else {
+      let newId = Math.floor(Math.random() * 1000);
+      console.log(newId);
+      createList({
+        title: title,
+        id: newId,
+        creatable: true,
+        cards: [],
+      });
+      handleClose();
+    }
   };
 
   return (
-    <TableContainer>
-      {lists.map((list) => (
-        <List key={list.title} data={list}></List>
-      ))}
-    </TableContainer>
+    <>
+      <Header setShowModal={setShowModal} />
+      <TableContainer>
+        {lists.map((list) => (
+          <List key={list.id} data={list}></List>
+        ))}
+      </TableContainer>
+      <Dialog fullWidth open={showModal} onClose={handleClose}>
+        <DialogTitle>Create a List</DialogTitle>
+        <DialogContent>
+          <form>
+            <TextField
+              label="Title"
+              sx={{ mt: 4 }}
+              fullWidth
+              error={error}
+              helperText={error ? error : ""}
+              onChange={handleTitle}
+            />
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => handleSubmit()}>Create</Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 }
