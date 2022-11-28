@@ -13,7 +13,7 @@ import {
 
 export default function Table() {
   const [error, setError] = useState(null);
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [lists, setLists] = useState([
     {
@@ -44,15 +44,11 @@ export default function Table() {
   const handleSubmit = () => {
     if (title.length === 0) {
       setError("Title can't be empty");
-      console.log("Error occured");
     } else {
-      let newId = Math.floor(Math.random() * 1000);
-      console.log(newId);
       createList({
         title: title,
-        id: newId,
+        id: Math.floor(Math.random() * 1000),
         creatable: true,
-        cards: [],
       });
       handleClose();
     }
@@ -66,19 +62,18 @@ export default function Table() {
           <List key={list.id} data={list} delFunc={deleteList}></List>
         ))}
       </TableContainer>
-      <Dialog fullWidth open={showModal} onClose={handleClose}>
+      <Dialog fullWidth open={showModal} onClose={() => setShowModal(false)}>
         <DialogTitle>Create a List</DialogTitle>
         <DialogContent>
-          <form>
-            <TextField
-              label="Title"
-              sx={{ mt: 4 }}
-              fullWidth
-              error={error}
-              helperText={error ? error : ""}
-              onChange={handleTitle}
-            />
-          </form>
+          <TextField
+            label="Title"
+            value={title}
+            sx={{ mt: 4 }}
+            fullWidth
+            error={error}
+            helperText={error ? error : ""}
+            onChange={handleTitle}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleSubmit()}>Create</Button>

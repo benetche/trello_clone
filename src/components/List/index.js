@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListContainer } from "./styles";
-import { MdMoreHoriz } from "react-icons/md";
+import { MdMoreHoriz, MdAdd } from "react-icons/md";
 import Card from "../Card";
 import {
   Button,
@@ -12,7 +12,6 @@ import {
   DialogActions,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
 
 export default function List({ data, delFunc }) {
   // handle the MUI menu
@@ -28,10 +27,16 @@ export default function List({ data, delFunc }) {
 
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
-  const [text, setText] = useState(null);
+  const [text, setText] = useState("");
   const [showDialog, setShowDialog] = useState(false);
+
   const createCard = (card) => {
     setCards([...cards, card]);
+  };
+
+  const deleteCard = (id) => {
+    let filtered = cards.filter((card) => card.id !== id);
+    setCards(filtered);
   };
 
   const handleDelete = () => {
@@ -52,6 +57,7 @@ export default function List({ data, delFunc }) {
         content: text,
         id: Math.floor(Math.random() * 1000),
       });
+
       handleDialogClose();
     }
   };
@@ -90,15 +96,22 @@ export default function List({ data, delFunc }) {
           <MenuItem onClick={() => handleDelete()}>Delete List</MenuItem>
         </Menu>
       </header>
-      <ul>
-        {cards.map((card) => (
-          <Card key={card.id} data={card}></Card>
-        ))}
-      </ul>
+      {cards.length !== 0 ? (
+        <ul>
+          {cards.map((card) => (
+            <Card key={card.id} data={card} delFunc={deleteCard} />
+          ))}
+        </ul>
+      ) : (
+        <Button fullWidth onClick={() => setShowDialog(true)}>
+          <MdAdd size={24} />
+        </Button>
+      )}
       <Dialog open={showDialog} onClose={() => setShowDialog(false)} fullWidth>
         <DialogTitle>Create Card</DialogTitle>
         <DialogContent>
           <TextField
+            value={text}
             fullWidth
             label="Text"
             sx={{ mt: 4 }}

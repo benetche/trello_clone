@@ -28,15 +28,9 @@ export const CardContainer = styled.div`
   }
 
   &:hover #delete {
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
     display: inline-block;
     position: absolute;
     right: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background: #fff;
-    cursor: pointer;
   }
 
   p {
@@ -48,18 +42,4 @@ export const CardContainer = styled.div`
     font-weight: 500;
     padding: 0;
   }
-
-  /* ${(props) =>
-    props.isDragging &&
-    css`
-      border: 1px dashed rgba(0, 0, 0, 0.2);
-      border-radius: 0;
-      box-shadow: none;
-      cursor: grabbing;
-      background: transparent;
-
-      * {
-        opacity: 0;
-      }
-    `} */
 `;
