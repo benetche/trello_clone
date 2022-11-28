@@ -12,12 +12,6 @@ export default function Card({ data }) {
 
   return (
     <CardContainer ref={dragRef} isDragging={isDragging}>
-      <header>
-        <h2>Titulo</h2>
-        {data.labels.map((label) => (
-          <CardLabel key={label} color={label} />
-        ))}
-      </header>
       <p>{data.content}</p>
     </CardContainer>
   );
