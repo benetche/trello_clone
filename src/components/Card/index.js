@@ -11,7 +11,7 @@ export default function Card({ data }) {
   });
 
   return (
-    <CardContainer ref={dragRef}>
+    <CardContainer ref={dragRef} isDragging={isDragging}>
       <header>
         <h2>Titulo</h2>
         {data.labels.map((label) => (

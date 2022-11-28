@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const CardContainer = styled.div`
   background-color: #fff;
@@ -15,6 +15,20 @@ export const CardContainer = styled.div`
   header {
     font-weight: 500;
   }
+
+  ${(props) =>
+    props.isDragging &&
+    css`
+      border: 1px dashed rgba(0, 0, 0, 0.2);
+      border-radius: 0;
+      box-shadow: none;
+      cursor: grabbing;
+      background: transparent;
+
+      * {
+        opacity: 0;
+      }
+    `}
 `;
 
 export const CardLabel = styled.span`
